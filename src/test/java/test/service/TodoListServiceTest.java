@@ -1,4 +1,4 @@
-package testservice;
+package test.service;
 
 import entity.TodoList;
 import repository.TodoListRepository;
@@ -11,8 +11,8 @@ public class TodoListServiceTest {
     public static void main(String[] args) {
 
 //        testShowTodoList();
-        testAddTodoList();
-
+//        testAddTodoList();
+        testRemoveTodoList();
     }
 
     public static void testShowTodoList() {
@@ -36,6 +36,28 @@ public class TodoListServiceTest {
         todoListService.addTodoList("Abis itu diulang-ulang lagi biar mantep");
         todoListService.addTodoList("Kalau udah cape, tidur lah");
 
+        todoListService.showTodoList();
+    }
+
+    public static void testRemoveTodoList() {
+        TodoListRepository todoListRepository = new TodoListRepositoryImpl();
+        TodoListService todoListService = new TodoListServiceImpl(todoListRepository);
+
+        todoListService.addTodoList("Belajar tidak harus pusing");
+        todoListService.addTodoList("Santai pelan-pelan");
+        todoListService.addTodoList("Abis itu diulang-ulang lagi biar mantep");
+        todoListService.addTodoList("Kalau udah cape, tidur lah");
+
+        todoListService.showTodoList();
+
+        todoListService.removeTodoList(5);
+        todoListService.removeTodoList(2);
+        todoListService.showTodoList();
+        todoListService.removeTodoList(2);
+        todoListService.showTodoList();
+        todoListService.removeTodoList(2);
+        todoListService.showTodoList();
+        todoListService.removeTodoList(1);
         todoListService.showTodoList();
     }
 
